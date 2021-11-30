@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/whacAmole.dir/main.cpp.o -o whacAmole  -lglut -lGLU -lGL 
