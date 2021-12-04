@@ -59,7 +59,13 @@ void moles(int){
     glutTimerFunc(500, moles, 1);
 }
 
-void Text(){}
+void Text(float x,float y,float z,void *font,char *string){
+    char *c;
+    glRasterPos3f(x, y,z);
+    for (c=string; *c != '\0'; c++) {
+        glutBitmapCharacter(font, *c);
+    }
+}
 
 void display(){
     glClear(GL_COLOR_BUFFER_BIT);
