@@ -126,7 +126,34 @@ void display(){
     glFlush();
 }
 
-void mouse(){}
+void mouse(int button, int state, int x, int y){
+    int currentClick;
+    if (button == GLUT_LEFT_BUTTON){
+        if(state == GLUT_DOWN){
+            if(x>0 && x<250 && y>0 && y<250){
+                currentClick = 1;
+            }else if(x>251 && x<500 && y>0 && y<250){
+                currentClick = 2;
+            }else if(x>0 && x<255 && y>251 && y<500){
+                currentClick = 3;
+            }else if(x>251 && x<500 && y>251 && y<500){
+                currentClick = 4;
+            }
+            if(life<=0){
+                cout<< "Game Over"<< endl;
+                gameStatus = "Game Over";
+            }
+
+            if(currentClick == currentHole){
+                score += 100;
+                cout << score << endl;
+            }else{
+                life--;
+                cout << "Missed" << endl;
+            }
+        }
+    }
+}
 
 int main(int argc,char**argv){
     glutInit(&argc,argv);
