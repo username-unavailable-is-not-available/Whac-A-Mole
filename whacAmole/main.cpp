@@ -5,6 +5,12 @@ using namespace std;
 int molePosX;
 int molePosY;
 
+static int score = 0;
+static int life = 3;
+static int currentHole;
+
+char* gameStatus = "";
+
 void init(){
     glClearColor(0.42,0.69,1.00,1);
 }
