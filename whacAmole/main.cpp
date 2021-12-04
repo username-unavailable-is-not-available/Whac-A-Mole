@@ -21,30 +21,38 @@ void holes(double x,double y,double z){
     glPushMatrix();
     glColor3f(0,1,0);
     glTranslatef(x,y,z);
-    glutSolidSphere(4.0,50.0,10);
+    glutSolidSphere(3.0,60.0,10);
     glPopMatrix();
 }
 
 void moles(int){
     glPushMatrix();
     glColor3f(1,0,0);
-    int x = (rand() % 4) + 1;
+    int x = (rand() % 6) + 1;
     //currentHole = x;
     switch(x){
         case 1:
-            molePosX = -5;
+            molePosX = -7;
             molePosY = 5;
             break;
         case 2:
-            molePosX = 5;
-            molePosY = 5;
-            break;
-        case 3:
-            molePosX = -5;
+            molePosX = -7;
             molePosY = -5;
             break;
+        case 3:
+            molePosX = 0;
+            molePosY = 5;
+            break;
         case 4:
-            molePosX = 5;
+            molePosX = 0;
+            molePosY = -5;
+            break;
+        case 5:
+            molePosX = 7;
+            molePosY = 5;
+            break;
+        case 6:
+            molePosX = 7;
             molePosY = -5;
             break;
     }
@@ -59,24 +67,24 @@ void display(){
 
 //Grid
     glPointSize(10.0);
-    //glTranslatef(3.5,0,0);
+    glTranslatef(3.5,0,0);
     glBegin(GL_LINES);
-    glVertex2f(-10, 0); //-14,0
-    glVertex2f(10, 0); //7,0
+    glVertex2f(-14, 0); //-14,0
+    glVertex2f(7, 0); //7,0
     glVertex2f(0, 10);
     glVertex2f(0, -10);
     glEnd();
 
-    /*glTranslatef(-7,0,0);
+    glTranslatef(-7,0,0);
     glBegin(GL_LINES);
-    //glVertex2f(0, 5);
-    //glVertex2f(0, -5);
+    glVertex2f(0, 5);
+    glVertex2f(0, -5);
     glVertex2f(0, 10);
     glVertex2f(0, -10);
-    glEnd();*/
+    glEnd();
 
 //Score Board
-    //glTranslatef(3.5,0,0);
+    glTranslatef(3.5,0,0);
     glBegin(GL_QUADS);
     glVertex2f(-3,1);
     glVertex2f(3,1);
@@ -85,27 +93,27 @@ void display(){
     glEnd();
 
 //Holes
-    holes(-5,5,0);
-    holes(5,5,0);
-    //holes(-5,-5,0);
-    holes(-5,-5,0);
-    holes(5,-5,0);
-    //holes(5,-5,0);
+    holes(-6.8,5,0);
+    holes(-6.8,-5,0);
+    holes(0,5,0);
+    holes(0,-5,0);
+    holes(6.8,5,0);
+    holes(6.8,-5,0);
 
 //Moles Position///////////////////////////
     glTranslatef(molePosX,molePosY,0);
     glColor3f(0,0,1);
 //Head
-    glutSolidSphere(2.0,50.0,40);
+    glutSolidSphere(1.5,50.0,100);
 //Left Eye
-    glTranslatef(-0.6,0.5,0);
-    glutSolidSphere(0.2,50.0,40);
+    glTranslatef(-0.7,0.5,0);
+    glutSolidSphere(0.1,50.0,40);
 //Right Eye
     glTranslatef(1.5,0,0);
-    glutSolidSphere(0.2,50.0,40);
+    glutSolidSphere(0.1,50.0,40);
 //Nose
-    glTranslatef(-0.5,-1.5,0);
-    glutSolidSphere(0.4,50.0,40);
+    glTranslatef(-0.5,-1.2,0);
+    glutSolidSphere(0.2,50.0,40);
 
     glPopMatrix();
     glutPostRedisplay();
@@ -119,7 +127,7 @@ int main(int argc,char**argv){
     glutInitDisplayMode(GLUT_RGB);
 
     glutInitWindowPosition(500,200);
-    glutInitWindowSize(500,500); //900, 500
+    glutInitWindowSize(900,500); //900, 500
 
     glutCreateWindow("Whac-A-Mole");
     glutTimerFunc(0, moles, 1);
