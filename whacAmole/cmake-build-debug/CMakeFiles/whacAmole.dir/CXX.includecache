@@ -9,4 +9,6 @@
 /home/yeasin/Development/ComputerGraphics/whacAmole/main.cpp
 GL/glut.h
 -
+iostream
+-
 
